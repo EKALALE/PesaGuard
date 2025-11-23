@@ -1,14 +1,14 @@
-import Income from "../models/Income";
+import Income from "../models/Income.js";
 
 //adding income
 export const addIncome = async(req,res)=>
 {
     try{
         const income =new Income(req.body);
-        await Income.save();
+        await income.save();
         res.status(201).json(income);
     }
-    catch(err){
+    catch(error){
         res.status(400).json({error:error.message});
     }
 };
