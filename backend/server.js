@@ -4,6 +4,9 @@ import cors from "cors";
 import dotenv from "dotenv";
 import nodemon from "nodemon";
 
+import incomeRoutes from "./routes/incomeRoutes";
+import expenseRoutes from "./routes/expenseRoutes";
+
 dotenv.config();
 const app = express();
 
@@ -16,6 +19,8 @@ mongoose.connect(process.env.MONGO_URI)
         .catch(err => console.log(err));
 
 //Routes
+app.use("api/income",incomeRoutes);
+app.use("api/expense",expenseRoutes);
 app.get("/",(req,res)=>{
     res.send("PesGuard backend Running");
 
