@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 
 import incomeRoutes from "./routes/incomeRoutes.js";
 import expenseRoutes from "./routes/expenseRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -24,6 +25,8 @@ app.get("/",(req,res)=>{
     res.send("PesaGuard backend Running");
 
 });
+
+app.use("/api/auth", authRoutes);
 
 //port
 const PORT =process.env.PORT||5000;
